@@ -1,0 +1,272 @@
+
+<testsuites errors="0" failures="30" tests="47" time="" name="Kubescape Scanning">
+
+  <testsuite tests="23" name="ClusterScan" errors="0" failures="16" hostname="" id="0" skipped="" time="" timestamp="0001-01-01 00:00:00 +0000 UTC">
+    <properties>
+      <property name="complianceScore" value="3.84">
+      </property>
+    </properties>
+    <testcase classname="ClusterScan" name="HostPath mount" time="">
+      <failure message="Remediation: Remove hostPath mounts unless they are absolutely necessary and use exception mechanism to remove notifications.&#xA;More details: https://hub.armosec.io/docs/c-0048&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="External facing" time="">
+    </testcase>
+    <testcase classname="ClusterScan" name="Audit logs enabled" time="">
+      <failure message="Remediation: Turn on audit logging for your cluster. Look at the vendor guidelines for more details&#xA;More details: https://hub.armosec.io/docs/c-0067&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Authenticated user has sensitive permissions" time="">
+    </testcase>
+    <testcase classname="ClusterScan" name="Validate admission controller (mutating)" time="">
+    </testcase>
+    <testcase classname="ClusterScan" name="Privileged container" time="">
+      <failure message="Remediation: Remove privileged capabilities by setting the securityContext.privileged to false. If you must deploy a Pod as privileged, add other restriction to it, such as network policy, Seccomp etc and still remove all unnecessary capabilities. Use the exception mechanism to remove unnecessary notifications.&#xA;More details: https://hub.armosec.io/docs/c-0057&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Portforwarding privileges" time="">
+      <failure message="Remediation: It is recommended to prohibit “kubectl portforward” command in production environments. It is also recommended not to use subjects with this permission for daily cluster operations.&#xA;More details: https://hub.armosec.io/docs/c-0063&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Missing network policy" time="">
+      <failure message="Remediation: Review the workloads identified by this control and assess whether it&#39;s necessary to configure a network policy for them.&#xA;More details: https://hub.armosec.io/docs/c-0260&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Administrative Roles" time="">
+      <failure message="Remediation: You should apply least privilege principle. Make sure cluster admin permissions are granted only when it is absolutely necessary. Don&#39;t use subjects with such high permissions for daily operations.&#xA;More details: https://hub.armosec.io/docs/c-0035&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Minimize access to create pods" time="">
+      <failure message="Remediation: Where possible, remove `create` access to `pod` objects in the cluster.&#xA;More details: https://hub.armosec.io/docs/c-0188&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Host PID/IPC privileges" time="">
+      <failure message="Remediation: Remove hostPID and hostIPC from the yaml file(s) privileges unless they are absolutely necessary.&#xA;More details: https://hub.armosec.io/docs/c-0038&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="RBAC enabled" time="">
+    </testcase>
+    <testcase classname="ClusterScan" name="Minimize wildcard use in Roles and ClusterRoles" time="">
+      <failure message="Remediation: Where possible replace any use of wildcards in clusterroles and roles with specific objects or actions.&#xA;More details: https://hub.armosec.io/docs/c-0187&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="HostNetwork access" time="">
+      <failure message="Remediation: Only connect pods to host network when it is necessary. If not, set the hostNetwork field of the pod spec to false, or completely remove it (false is the default). Whitelist only those pods that must have access to host network by design.&#xA;More details: https://hub.armosec.io/docs/c-0041&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="API server insecure port is enabled" time="">
+    </testcase>
+    <testcase classname="ClusterScan" name="Validate admission controller (validating)" time="">
+    </testcase>
+    <testcase classname="ClusterScan" name="Prevent containers from allowing command execution" time="">
+      <failure message="Remediation: It is recommended to prohibit “kubectl exec” command in production environments. It is also recommended not to use subjects with this permission for daily cluster operations.&#xA;More details: https://hub.armosec.io/docs/c-0002&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Anonymous access enabled" time="">
+      <failure message="Remediation: Review and modify your cluster&#39;s RBAC configuration to ensure that only authenticated and authorized users have appropriate permissions based on their roles and responsibilities within your system.&#xA;More details: https://hub.armosec.io/docs/c-0262&#xA;&#xA;apiVersion: rbac.authorization.k8s.io/v1; kind: ClusterRoleBinding; name: system:public-info-viewer&#xA;apiVersion: rbac.authorization.k8s.io/v1; kind: RoleBinding; namespace: kube-public; name: kubeadm:bootstrap-signer-clusterinfo" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Roles with delete capabilities" time="">
+      <failure message="Remediation: You should follow the least privilege principle and minimize the number of subjects that can delete resources.&#xA;More details: https://hub.armosec.io/docs/c-0007&#xA;&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kubescape&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: node-agent&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: operator&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: synchronizer&#xA;apiVersion: ; kind: ServiceAccount; namespace: kube-system; name: legacy-service-account-token-cleaner&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="List Kubernetes secrets" time="">
+      <failure message="Remediation: Monitor and approve list of users, groups and service accounts that can access secrets. Use exception mechanism to prevent repetitive the notifications.&#xA;More details: https://hub.armosec.io/docs/c-0015&#xA;&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: alloy&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kollector&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kubescape&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: operator&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: prometheus-kube-state-metrics&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: synchronizer&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Applications credentials in configuration files" time="">
+    </testcase>
+    <testcase classname="ClusterScan" name="Secret/etcd encryption enabled" time="">
+      <failure message="Remediation: Turn on the etcd encryption in your cluster, for more see the vendor documentation.&#xA;More details: https://hub.armosec.io/docs/c-0066&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="ClusterScan" name="Non-root containers" time="">
+      <failure message="Remediation: If your application does not need root privileges, make sure to define runAsNonRoot as true or explicitly set the runAsUser using ID 1000 or higher under the PodSecurityContext or container securityContext. In addition, set an explicit value for runAsGroup using ID 1000 or higher.&#xA;More details: https://hub.armosec.io/docs/c-0013&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: gateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: kubescape&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: kubevuln&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: operator&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: otel-collector&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-exporter&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: storage&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: synchronizer&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: kollector&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubescape-scheduler&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubevuln-scheduler&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite tests="26" name="MITRE" errors="0" failures="14" hostname="" id="1" skipped="" time="" timestamp="0001-01-01 00:00:00 +0000 UTC">
+    <properties>
+      <property name="complianceScore" value="6.02">
+      </property>
+    </properties>
+    <testcase classname="MITRE" name="Writable hostPath mount" time="">
+      <failure message="Remediation: Refrain from using the hostPath mount or use the exception mechanism to remove unnecessary notifications.&#xA;More details: https://hub.armosec.io/docs/c-0045&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Privileged container" time="">
+      <failure message="Remediation: Remove privileged capabilities by setting the securityContext.privileged to false. If you must deploy a Pod as privileged, add other restriction to it, such as network policy, Seccomp etc and still remove all unnecessary capabilities. Use the exception mechanism to remove unnecessary notifications.&#xA;More details: https://hub.armosec.io/docs/c-0057&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Prevent containers from allowing command execution" time="">
+      <failure message="Remediation: It is recommended to prohibit “kubectl exec” command in production environments. It is also recommended not to use subjects with this permission for daily cluster operations.&#xA;More details: https://hub.armosec.io/docs/c-0002&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="HostPath mount" time="">
+      <failure message="Remediation: Remove hostPath mounts unless they are absolutely necessary and use exception mechanism to remove notifications.&#xA;More details: https://hub.armosec.io/docs/c-0048&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Access Kubernetes dashboard" time="">
+    </testcase>
+    <testcase classname="MITRE" name="CVE-2021-25742-nginx-ingress-snippet-annotation-vulnerability" time="">
+    </testcase>
+    <testcase classname="MITRE" name="Validate admission controller (validating)" time="">
+    </testcase>
+    <testcase classname="MITRE" name="Mount service principal" time="">
+    </testcase>
+    <testcase classname="MITRE" name="SSH server running inside container" time="">
+    </testcase>
+    <testcase classname="MITRE" name="PSP enabled" time="">
+      <failure message="Remediation: Turn Pod Security Policies on in your cluster, if you use other admission controllers to control the behavior that PSP controls, exclude this control from your scans&#xA;More details: https://hub.armosec.io/docs/c-0068&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Access container service account" time="">
+      <failure message="Remediation: Verify that RBAC is enabled. Follow the least privilege principle and ensure that only necessary pods have SA token mounted into them.&#xA;More details: https://hub.armosec.io/docs/c-0053&#xA;&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: alloy&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: fluent-bit&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: grafana&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kollector&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kubescape&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kubevuln&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: node-agent&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: operator&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: prometheus-exporter&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: prometheus-kube-state-metrics&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: prometheus-server&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: storage&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: synchronizer&#xA;apiVersion: ; kind: ServiceAccount; namespace: kube-system; name: legacy-service-account-token-cleaner&#xA;apiVersion: ; kind: ServiceAccount; namespace: kube-system; name: validatingadmissionpolicy-status-controller&#xA;apiVersion: ; kind: ServiceAccount; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Audit logs enabled" time="">
+      <failure message="Remediation: Turn on audit logging for your cluster. Look at the vendor guidelines for more details&#xA;More details: https://hub.armosec.io/docs/c-0067&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Disable anonymous access to Kubelet service" time="">
+      <skipped message="">
+      </skipped>
+    </testcase>
+    <testcase classname="MITRE" name="Roles with delete capabilities" time="">
+      <failure message="Remediation: You should follow the least privilege principle and minimize the number of subjects that can delete resources.&#xA;More details: https://hub.armosec.io/docs/c-0007&#xA;&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kubescape&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: node-agent&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: operator&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: synchronizer&#xA;apiVersion: ; kind: ServiceAccount; namespace: kube-system; name: legacy-service-account-token-cleaner&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Kubernetes CronJob" time="">
+      <failure message="Remediation: Watch Kubernetes CronJobs and make sure they are legitimate.&#xA;More details: https://hub.armosec.io/docs/c-0026&#xA;&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubescape-scheduler&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubevuln-scheduler" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="CoreDNS poisoning" time="">
+      <failure message="Remediation: You should follow the least privilege principle. Monitor and approve all the subjects allowed to modify the &#39;coredns&#39; configmap. It is also recommended to remove this permission from the users/service accounts used in the daily operations.&#xA;More details: https://hub.armosec.io/docs/c-0037&#xA;&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: operator&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: synchronizer&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="List Kubernetes secrets" time="">
+      <failure message="Remediation: Monitor and approve list of users, groups and service accounts that can access secrets. Use exception mechanism to prevent repetitive the notifications.&#xA;More details: https://hub.armosec.io/docs/c-0015&#xA;&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: alloy&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kollector&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: kubescape&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: operator&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: prometheus-kube-state-metrics&#xA;apiVersion: ; kind: ServiceAccount; namespace: default; name: synchronizer&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Applications credentials in configuration files" time="">
+    </testcase>
+    <testcase classname="MITRE" name="Validate admission controller (mutating)" time="">
+    </testcase>
+    <testcase classname="MITRE" name="Secret/etcd encryption enabled" time="">
+      <failure message="Remediation: Turn on the etcd encryption in your cluster, for more see the vendor documentation.&#xA;More details: https://hub.armosec.io/docs/c-0066&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Cluster internal networking" time="">
+    </testcase>
+    <testcase classname="MITRE" name="CVE-2021-25741 - Using symlink for arbitrary host file system access." time="">
+    </testcase>
+    <testcase classname="MITRE" name="Exposed sensitive interfaces" time="">
+    </testcase>
+    <testcase classname="MITRE" name="Enforce Kubelet client TLS authentication" time="">
+      <skipped message="">
+      </skipped>
+    </testcase>
+    <testcase classname="MITRE" name="Delete Kubernetes events" time="">
+      <failure message="Remediation: You should follow the least privilege principle. Minimize the number of subjects who can delete Kubernetes events. Avoid using these subjects in the daily operations.&#xA;More details: https://hub.armosec.io/docs/c-0031&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="MITRE" name="Administrative Roles" time="">
+      <failure message="Remediation: You should apply least privilege principle. Make sure cluster admin permissions are granted only when it is absolutely necessary. Don&#39;t use subjects with such high permissions for daily operations.&#xA;More details: https://hub.armosec.io/docs/c-0035&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite tests="25" name="NSA" errors="0" failures="17" hostname="" id="2" skipped="" time="" timestamp="0001-01-01 00:00:00 +0000 UTC">
+    <properties>
+      <property name="complianceScore" value="15.72">
+      </property>
+    </properties>
+    <testcase classname="NSA" name="PSP enabled" time="">
+      <failure message="Remediation: Turn Pod Security Policies on in your cluster, if you use other admission controllers to control the behavior that PSP controls, exclude this control from your scans&#xA;More details: https://hub.armosec.io/docs/c-0068&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Insecure capabilities" time="">
+      <failure message="Remediation: Remove all insecure capabilities which are not necessary for the container.&#xA;More details: https://hub.armosec.io/docs/c-0046&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="CVE-2021-25742-nginx-ingress-snippet-annotation-vulnerability" time="">
+    </testcase>
+    <testcase classname="NSA" name="Ensure memory limits are set" time="">
+      <failure message="Remediation: Set the memory limits or use exception mechanism to avoid unnecessary notifications.&#xA;More details: https://hub.armosec.io/docs/c-0271&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: grafana&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-distributor&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-gateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-querier&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-query-frontend&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-kube-state-metrics&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-compactor&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-distributor&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-querier&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-query-frontend&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alertmanager&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-compactor&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-index-gateway&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-ingester&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: prometheus-server&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: tempo-ingester&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: tempo-memcached&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Enforce Kubelet client TLS authentication" time="">
+      <skipped message="">
+      </skipped>
+    </testcase>
+    <testcase classname="NSA" name="Disable anonymous access to Kubelet service" time="">
+      <skipped message="">
+      </skipped>
+    </testcase>
+    <testcase classname="NSA" name="Non-root containers" time="">
+      <failure message="Remediation: If your application does not need root privileges, make sure to define runAsNonRoot as true or explicitly set the runAsUser using ID 1000 or higher under the PodSecurityContext or container securityContext. In addition, set an explicit value for runAsGroup using ID 1000 or higher.&#xA;More details: https://hub.armosec.io/docs/c-0013&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: gateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: kubescape&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: kubevuln&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: operator&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: otel-collector&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-exporter&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: storage&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: synchronizer&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: kollector&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubescape-scheduler&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubevuln-scheduler&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Audit logs enabled" time="">
+      <failure message="Remediation: Turn on audit logging for your cluster. Look at the vendor guidelines for more details&#xA;More details: https://hub.armosec.io/docs/c-0067&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="API server insecure port is enabled" time="">
+    </testcase>
+    <testcase classname="NSA" name="Automatic mapping of service account" time="">
+      <failure message="Remediation: Disable automatic mounting of service account tokens to pods either at the service account level or at the individual pod level, by specifying the automountServiceAccountToken: false. Note that pod level takes precedence.&#xA;More details: https://hub.armosec.io/docs/c-0034&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-distributor&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-gateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-querier&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-query-frontend&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: otel-collector&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-kube-state-metrics&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: storage&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alertmanager&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-compactor&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-index-gateway&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-ingester&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: prometheus-server&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: alertmanager&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: alloy&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: fluent-bit&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: gateway&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: node-agent&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: otel-collector&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: prometheus-kube-state-metrics&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: prometheus-server&#xA;apiVersion: v1; kind: ServiceAccount; namespace: default; name: storage&#xA;apiVersion: v1; kind: ServiceAccount; namespace: kube-system; name: legacy-service-account-token-cleaner&#xA;apiVersion: v1; kind: ServiceAccount; namespace: kube-system; name: validatingadmissionpolicy-status-controller&#xA;apiVersion: v1; kind: ServiceAccount; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Ensure CPU limits are set" time="">
+      <failure message="Remediation: Set the CPU limits or use exception mechanism to avoid unnecessary notifications.&#xA;More details: https://hub.armosec.io/docs/c-0270&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: grafana&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-distributor&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-gateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-querier&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-query-frontend&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-kube-state-metrics&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-compactor&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-distributor&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-querier&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: tempo-query-frontend&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alertmanager&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-compactor&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-index-gateway&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: loki-distributed-ingester&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: prometheus-server&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: tempo-ingester&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: tempo-memcached&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Allow privilege escalation" time="">
+      <failure message="Remediation: If your application does not need it, make sure the allowPrivilegeEscalation field of the securityContext is set to false.&#xA;More details: https://hub.armosec.io/docs/c-0016&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: loki-distributed-gateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alertmanager&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: prometheus-server&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Administrative Roles" time="">
+      <failure message="Remediation: You should apply least privilege principle. Make sure cluster admin permissions are granted only when it is absolutely necessary. Don&#39;t use subjects with such high permissions for daily operations.&#xA;More details: https://hub.armosec.io/docs/c-0035&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Cluster internal networking" time="">
+    </testcase>
+    <testcase classname="NSA" name="Applications credentials in configuration files" time="">
+    </testcase>
+    <testcase classname="NSA" name="Linux hardening" time="">
+      <failure message="Remediation: You can use AppArmor, Seccomp, SELinux and Linux Capabilities mechanisms to restrict containers abilities to utilize unwanted privileges.&#xA;More details: https://hub.armosec.io/docs/c-0055&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: gateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: kubescape&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: kubevuln&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: operator&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: otel-collector&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-exporter&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: storage&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: synchronizer&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alertmanager&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: kollector&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: prometheus-server&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubescape-scheduler&#xA;apiVersion: batch/v1; kind: CronJob; namespace: default; name: kubevuln-scheduler&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="CVE-2021-25741 - Using symlink for arbitrary host file system access." time="">
+    </testcase>
+    <testcase classname="NSA" name="Host PID/IPC privileges" time="">
+      <failure message="Remediation: Remove hostPID and hostIPC from the yaml file(s) privileges unless they are absolutely necessary.&#xA;More details: https://hub.armosec.io/docs/c-0038&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Secret/etcd encryption enabled" time="">
+      <failure message="Remediation: Turn on the etcd encryption in your cluster, for more see the vendor documentation.&#xA;More details: https://hub.armosec.io/docs/c-0066&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: kube-apiserver-docker-desktop" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Prevent containers from allowing command execution" time="">
+      <failure message="Remediation: It is recommended to prohibit “kubectl exec” command in production environments. It is also recommended not to use subjects with this permission for daily cluster operations.&#xA;More details: https://hub.armosec.io/docs/c-0002&#xA;&#xA;apiVersion: rbac.authorization.k8s.io; kind: Group; name: kubeadm:cluster-admins" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Container hostPort" time="">
+    </testcase>
+    <testcase classname="NSA" name="Privileged container" time="">
+      <failure message="Remediation: Remove privileged capabilities by setting the securityContext.privileged to false. If you must deploy a Pod as privileged, add other restriction to it, such as network policy, Seccomp etc and still remove all unnecessary capabilities. Use the exception mechanism to remove unnecessary notifications.&#xA;More details: https://hub.armosec.io/docs/c-0057&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="HostNetwork access" time="">
+      <failure message="Remediation: Only connect pods to host network when it is necessary. If not, set the hostNetwork field of the pod spec to false, or completely remove it (false is the default). Whitelist only those pods that must have access to host network by design.&#xA;More details: https://hub.armosec.io/docs/c-0041&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: prometheus-node-exporter" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Immutable container filesystem" time="">
+      <failure message="Remediation: Set the filesystem of the container to read-only when possible (pod securityContext, readOnlyRootFilesystem: true). If containers application needs to write into the filesystem, it is recommended to mount secondary filesystems for specific directories where application require write access.&#xA;More details: https://hub.armosec.io/docs/c-0017&#xA;&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: fluent-bit&#xA;apiVersion: apps/v1; kind: DaemonSet; namespace: default; name: node-agent&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: grafana&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: otel-collector&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-msteams&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: prometheus-pushgateway&#xA;apiVersion: apps/v1; kind: Deployment; namespace: default; name: storage&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alertmanager&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: alloy&#xA;apiVersion: apps/v1; kind: StatefulSet; namespace: default; name: prometheus-server&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+    <testcase classname="NSA" name="Ingress and Egress blocked" time="">
+      <failure message="Remediation: Define a network policy that restricts ingress and egress connections.&#xA;More details: https://hub.armosec.io/docs/c-0030&#xA;&#xA;apiVersion: v1; kind: Pod; namespace: kube-system; name: vpnkit-controller" type="Control">
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>
